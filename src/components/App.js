@@ -7,6 +7,7 @@ import Button from './button/Button';
 import Modal from './modal/Modal';
 import imagesApi from '../services/imagesApi';
 import styles from './App.module.css';
+import Notification from './notification/Notification';
 
 class App extends Component {
   state = {
@@ -44,12 +45,6 @@ class App extends Component {
     this.setState({ loading: true });
     imagesApi
       .fetchImagesWithQuery(searchQuery, page)
-      // .then(data => {
-      //   console.log(data);
-      //   const img = [];
-      //   data.forEach(item => img.push({ id: item.id, src: item.webformatURL }));
-      //   console.log(img);
-      // })
       .then(data =>
         this.setState(prevState => ({
           images: [...prevState.images, ...data.images],
@@ -71,18 +66,29 @@ class App extends Component {
   };
 
   render() {
-    const { images, loading, error, largeImageUrl } = this.state;
-    // console.log(images);
+    const {
+      images,
+      loading,
+      error,
+      largeImageUrl,
+      page,
+      pageCount,
+    } = this.state;
     return (
       <div className={styles.App}>
-        {error && <div>Something went wrong: {error.message}</div>}
+        {error && (
+          <Notification message={`Something went wrong: ${error.message}`} />
+        )}
         <SearchBar onSubmit={this.handleSearchFormSubmit} />
         {images.length > 0 && (
           <ImageGallery images={images} setLargeImage={this.setLargeImage} />
         )}
         {loading && <Spinner />}
-        {images.length > 0 && !loading && (
+        {page <= pageCount && !loading && (
           <Button loadImages={this.fetchImages} />
+        )}
+        {page > 1 && !pageCount && (
+          <Notification message="No images found for your search" />
         )}
         {largeImageUrl && (
           <Modal onClose={() => this.setLargeImage(null)}>

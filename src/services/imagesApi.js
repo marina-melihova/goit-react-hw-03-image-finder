@@ -15,11 +15,6 @@ const fetchImagesWithQuery = (searchQuery, page = 1) => {
           largeImageURL,
         }),
       );
-      const maxPage = Math.ceil(response.data.total / 12);
-      // console.log(images);
-      // response.data.hits.forEach(item =>
-      //   img.push({ id: item.id, src: item.webformatURL }),
-      // );
       const { total } = response.data;
       console.log(total);
       return { images, total };

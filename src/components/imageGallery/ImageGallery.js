@@ -1,20 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ImageGalleryItem from './imageGalleryItem/ImageGalleryItem';
 import styles from './ImageGallery.module.css';
 
 const ImageGallery = ({ images, setLargeImage }) => {
   return (
     <ul className={styles.ImageGallery}>
       {images.map(image => (
-        <li key={image.id} className={styles.ImageGalleryItem}>
-          <img
-            className={styles.ImageGalleryItemImage}
-            src={image.webformatURL}
-            alt="super-gallery"
-            onClick={() => setLargeImage(image.largeImageURL)}
-          />
-        </li>
+        <ImageGalleryItem key={image.id} image={image} />
       ))}
     </ul>
   );
@@ -28,6 +21,7 @@ ImageGallery.propTypes = {
       largeImageURL: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  setLargeImage: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
