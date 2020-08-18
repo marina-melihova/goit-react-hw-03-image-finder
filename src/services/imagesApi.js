@@ -16,7 +16,6 @@ const fetchImagesWithQuery = (searchQuery, page = 1) => {
         }),
       );
       const { total } = response.data;
-      console.log(total);
       return { images, total };
     });
 };

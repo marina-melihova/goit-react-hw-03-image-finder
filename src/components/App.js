@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-
 import SearchBar from './searchBar.js/SearchBar';
 import ImageGallery from './imageGallery/ImageGallery';
 import Spinner from './spinner/Spinner';
 import Button from './button/Button';
 import Modal from './modal/Modal';
+import Notification from './notification/Notification';
 import imagesApi from '../services/imagesApi';
 import styles from './App.module.css';
-import Notification from './notification/Notification';
 
 class App extends Component {
   state = {
