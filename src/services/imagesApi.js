@@ -19,7 +19,9 @@ const fetchImagesWithQuery = (searchQuery, page = 1) => {
       // response.data.hits.forEach(item =>
       //   img.push({ id: item.id, src: item.webformatURL }),
       // );
-      return images;
+      const { total } = response.data;
+      console.log(total);
+      return { images, total };
     });
 };
 

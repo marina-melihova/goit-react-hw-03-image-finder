@@ -16,6 +16,7 @@ class App extends Component {
     searchQuery: '',
     page: 1,
     largeImageUrl: null,
+    pageCount: 0,
   };
 
   setLargeImage = url => {
@@ -49,10 +50,11 @@ class App extends Component {
       //   data.forEach(item => img.push({ id: item.id, src: item.webformatURL }));
       //   console.log(img);
       // })
-      .then(images =>
+      .then(data =>
         this.setState(prevState => ({
-          images: [...prevState.images, ...images],
+          images: [...prevState.images, ...data.images],
           page: prevState.page + 1,
+          pageCount: Math.ceil(data.total / 12),
         })),
       )
       .catch(error => this.setState({ error }))
@@ -63,6 +65,7 @@ class App extends Component {
     this.setState({
       searchQuery: query,
       page: 1,
+      pageCount: 0,
       images: [],
     });
   };
