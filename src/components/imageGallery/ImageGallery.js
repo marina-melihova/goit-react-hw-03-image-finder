@@ -11,7 +11,7 @@ const ImageGallery = ({ images, setLargeImage }) => {
           <img
             className={styles.ImageGalleryItemImage}
             src={image.webformatURL}
-            alt="image from gallery"
+            alt="super-gallery"
             onClick={() => setLargeImage(image.largeImageURL)}
           />
         </li>
