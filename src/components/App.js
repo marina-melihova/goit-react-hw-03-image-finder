@@ -86,7 +86,7 @@ class App extends Component {
         )}
         {largeImageUrl && (
           <Modal onClose={() => this.setLargeImage(null)}>
-            <img src={largeImageUrl} alt="large image" />
+            <img src={largeImageUrl} alt="view large" />
           </Modal>
         )}
       </div>
