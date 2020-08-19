@@ -21,10 +21,23 @@ export class Modal extends Component {
     }
   };
 
+  handleClick = e => {
+    if (e.target.dataset.name !== 'overlay') {
+      return;
+    }
+    this.props.onClose();
+  };
+
   render() {
     return (
-      <div className={styles.Overlay} onClick={this.props.onClose}>
-        <div className={styles.Modal}>{this.props.children}</div>
+      <div
+        className={styles.Overlay}
+        data-name="overlay"
+        onClick={this.handleClick}
+      >
+        <div className={styles.Modal} data-name="modal">
+          {this.props.children}
+        </div>
       </div>
     );
   }
