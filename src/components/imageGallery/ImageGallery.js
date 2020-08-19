@@ -7,7 +7,11 @@ const ImageGallery = ({ images, setLargeImage }) => {
   return (
     <ul className={styles.ImageGallery}>
       {images.map(image => (
-        <ImageGalleryItem key={image.id} image={image} />
+        <ImageGalleryItem
+          key={image.id}
+          image={image}
+          setLargeImage={setLargeImage}
+        />
       ))}
     </ul>
   );

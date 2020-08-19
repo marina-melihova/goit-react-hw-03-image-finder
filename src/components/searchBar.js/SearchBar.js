@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import SearchForm from './searchForm/SearchForm';
 import styles from './SearchBar.module.css';
